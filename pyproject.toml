@@ -1,0 +1,15 @@
+[build-system]
+requires = ["hatchling>=1.8.1", "urllib3>=1.26.12", "PySide6>=6.2.4" ]
+build-backend= "hatchling.build"
+[project]
+name="sports_updater"
+version = "0.1"
+
+
+#from urllib.request import urlopen
+#import json
+#import sys
+
+#from PySide6.QtGui import QGuiApplication
+#from PySide6.QtQml import QQmlApplicationEngine
+#from PySide6.QtCore import QTimer
