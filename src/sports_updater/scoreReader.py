@@ -6,6 +6,15 @@ import json
 #d = open("/home/risto/Desktop/python-sports-updater/scoreboard.json")
 #data = json.load(d)
 
+# TODO create a constant/method to show if a game is currently in progress or not
+
+# function which determines if a game is currently in progress or not
+def isInProgress(game, i):
+    if game["events"][i]["status"]["type"]["description"] == "In Progress":
+        return True
+    else:
+        return False
+
 
 def update_scoreboard():
     # comment out next three lines to use the test json file
@@ -40,22 +49,26 @@ def update_scoreboard():
                 except:
                     awayPitcherString = "{SP not named}"
 
-            pitcherString = awayPitcherString + "  -  " + homePitcherString
+            if(isInProgress(data,i) is False):
+                pitcherString = awayPitcherString + "  -  " + homePitcherString
+            else:
+                pitcherString=""
             scoreString = awayString + " - " + homeString
 
         if l == 0:
             mainString = mainString + scoreString
-            mainString = mainString + "\n" + data["events"][i]["status"]["type"]["shortDetail"] + "\n"
-            mainString = mainString + pitcherString
+            mainString = mainString + "\n" + data["events"][i]["status"]["type"]["shortDetail"]
+            if (isInProgress(data, i) is False):
+                mainString = mainString +"\n" + pitcherString
             if data["events"][i]["status"]["type"]["description"] == "In Progress":
                 mainString = mainString + "\n" + data["events"][i]["competitions"][0]["situation"]["lastPlay"]["text"]
             l = 1
         else:
             sit = data["events"][i]["status"]["type"]["shortDetail"]
             mainString = mainString + "\n\n" + scoreString
-            mainString = mainString + "\n" + data["events"][i]["status"]["type"]["shortDetail"] + "\n"
-            mainString = mainString + pitcherString
-
+            mainString = mainString + "\n" + data["events"][i]["status"]["type"]["shortDetail"]
+            if (isInProgress(data, i) is False):
+                mainString = mainString +"\n" + pitcherString
             if data["events"][i]["status"]["type"]["description"] == "In Progress":
                 mainString = mainString + "\n" + data["events"][i]["competitions"][0]["situation"]["lastPlay"]["text"]
 
@@ -63,4 +76,4 @@ def update_scoreboard():
 
     return mainString
 
-# print(update_scoreboard())
+#print(update_scoreboard())
