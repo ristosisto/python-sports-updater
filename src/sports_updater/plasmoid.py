@@ -18,7 +18,7 @@ def update_score():
     engine.rootObjects()[0].setProperty('main_string', main_string)
 
 timer = QTimer()
-timer.setInterval(5000)  # msecs 100 = 1/10th sec
+timer.setInterval(3000)  # msecs 100 = 1/10th sec
 timer.timeout.connect(update_score)
 timer.start()
 

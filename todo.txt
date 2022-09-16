@@ -1,0 +1,4 @@
+- change the interface to have a list of the games and then be able to click on one
+- after clicking on a game, a separate interface expands within the same window which shows the status of the game such as the inning, outs, runners on base, pitchers, pitch count, count, etc
+- maybe change the time the game starts into the timezone of the computer instead of just eastern time
+- also might want to have a way to pin games so you can monitor multiple games at once

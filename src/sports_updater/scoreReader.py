@@ -18,9 +18,12 @@ def isInProgress(game, i):
 
 def update_scoreboard():
     # comment out next three lines to use the test json file
-    url = "https://site.api.espn.com/apis/site/v2/sports/baseball/mlb/scoreboard"
-    response = urlopen(url)
-    data = json.loads(response.read())
+    try:
+        url = "https://site.api.espn.com/apis/site/v2/sports/baseball/mlb/scoreboard"
+        response = urlopen(url)
+        data = json.loads(response.read())
+    except:
+        print("Not connected to the internet") #maybe create a more robust logging system
 
     numGames = len(data["events"])  # tells how many games there are today
 
